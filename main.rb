@@ -19,9 +19,9 @@ class Main
   def user_interface
     show_all_choises
     puts 'enter your choise please:'
-     choise = gets.chomp.to_i
-     seclect_your_choise(choise)
-     user_interface
+    choise = gets.chomp.to_i
+    seclect_your_choise(choise)
+    user_interface
   end
 
   def show_all_choises
