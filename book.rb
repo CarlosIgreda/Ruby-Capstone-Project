@@ -1,16 +1,27 @@
 require_relative 'item'
+require 'date'
 
-# Class for book creation
 class Book < Item
   attr_accessor :publisher, :cover_state
+  attr_reader :title, :author, :genre, :label, :publish_date
 
-  def initialize(publisher, cover_state)
-    @publisher = publisher
-    @cover_state = cover_state
-    super()
+  def initialize(book_data)
+    super(
+      book_data[:genre],
+      book_data[:author],
+      book_data[:publish_date],
+      book_data[:label]
+    )
+    @title = book_data[:title]
+    @publisher = book_data[:publisher]
+    @cover_state = book_data[:cover_state]
   end
 
   def can_be_archived?
-    # Logic to know if the book can be archived, return true or false
+    if super
+      true
+    else
+      cover_state == 'bad'
+    end
   end
 end
