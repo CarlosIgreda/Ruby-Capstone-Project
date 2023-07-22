@@ -1,29 +1,26 @@
-require './author'
+require_relative '../modules/author'
 
 RSpec.describe Author do
-  author = Author.new('haftamu', 'desta')
-  let(:item) { 'test item' }
-  describe '#author' do
-    it('returns instance of author object') do
-      expect(author).to be_instance_of(Author)
+  let(:author) { Author.new(1, 'Mario', 'Vargas') }
+
+  describe '#initialize' do
+    it 'sets id, first_name, and last_name' do
+      expect(author.id).to eq(1)
+      expect(author.first_name).to eq('Mario')
+      expect(author.last_name).to eq('Vargas')
     end
-    it('returns first name correctly') do
-      expect(author.first_name).to eql('haftamu')
-    end
-    it('returns last name correctly') do
-      expect(author.last_name).to eql('desta')
+
+    it 'sets items as an empty array' do
+      expect(author.items).to be_empty
     end
   end
 
-  describe 'when receiving invalid arguments' do
-    it 'raises an ArgumentError when not given two arguments' do
-      expect { Author.new('haftamu') }.to raise_exception(ArgumentError)
-    end
-  end
-  describe '#add_item ' do
-    it 'add_item method updates the items' do
+  describe '#add_item' do
+    let(:item) { double('Item') }
+
+    it 'adds the item to the items array' do
       author.add_item(item)
-      expect(author.items).to eq([item])
+      expect(author.items).to contain_exactly(item)
     end
   end
 end
