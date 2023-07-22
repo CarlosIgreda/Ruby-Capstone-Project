@@ -1,4 +1,4 @@
-require_relative '../book'
+require_relative '../modules/book'
 
 RSpec.describe Book do
   let(:book_data) do
@@ -16,7 +16,7 @@ RSpec.describe Book do
   let(:book) { Book.new(book_data) }
 
   describe '#can_be_archived?' do
-    context 'when the cover_state is "bad"' do
+    context 'whenever the cover_state is equal to "bad"' do
       it 'returns true' do
         test_class = Class.new(Book) do
           def can_be_archived?
@@ -29,7 +29,7 @@ RSpec.describe Book do
       end
     end
 
-    context 'when the parent method returns false and cover_state is not "bad"' do
+    context 'whenever the parent method returns false and cover_state is not equal to "bad"' do
       it 'returns false' do
         test_class = Class.new(Book) do
           def can_be_archived?
