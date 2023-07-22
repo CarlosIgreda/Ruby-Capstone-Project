@@ -1,20 +1,22 @@
-require './genre'
+require_relative '../modules/genre'
 
 RSpec.describe Genre do
-  genres = Genre.new('haftamu')
-  let(:item) { 'test item' }
-  describe '#genre' do
-    it('returns instance of Genre object') do
-      expect(genres).to be_instance_of(Genre)
+  let(:genre) { Genre.new(1, 'Science fiction') }
+
+  describe '#initialize' do
+    it 'sets id and name' do
+      expect(genre.id).to eq(1)
+      expect(genre.name).to eq('Science fiction')
     end
-    it('returns  name correctly') do
-      expect(genres.name).to eql('haftamu')
+
+    it 'sets an empty items array' do
+      expect(genre.items).to be_empty
     end
   end
-  describe '#add_item ' do
-    it 'add_item method updates the items' do
-      genres.add_item(item)
-      expect(genres.items).to eql([item])
+
+  describe '#to_s' do
+    it 'returns the genre name as a string' do
+      expect(genre.to_s).to eq('Science fiction')
     end
   end
 end

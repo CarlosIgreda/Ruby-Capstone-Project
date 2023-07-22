@@ -7,7 +7,7 @@ class Label
     attr_reader :labels
   end
 
-  def initialize(title, color = 'red')
+  def initialize(title, color = 'black')
     @title = title
     @color = color
     @items = []

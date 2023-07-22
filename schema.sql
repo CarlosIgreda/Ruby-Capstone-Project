@@ -1,13 +1,30 @@
-DROP TABLE IF EXISTS Item;
-DROP TABLE IF EXISTS Genre;
-DROP TABLE IF EXISTS Author;
-DROP TABLE IF EXISTS MusicAlbum;
-DROP TABLE IF EXISTS Labels;
-DROP TABLE IF EXISTS Books;
-DROP TABLE IF EXISTS Games;
+DROP TABLE IF EXISTS genres;
+DROP TABLE IF EXISTS authors;
+DROP TABLE IF EXISTS labels;
+DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS music_albums;
 
-CREATE TABLE Item (
-  id INTEGER PRIMARY KEY,
+CREATE TABLE genres (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255)
+);
+
+CREATE TABLE authors(
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL
+)
+
+CREATE TABLE labels (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255),
+  color VARCHAR(255)
+);
+
+CREATE TABLE items (
+  id SERIAL PRIMARY KEY,
   genre_id INT REFERENCES genres(id),
   author_id INT REFERENCES authors(id),
   label_id INT REFERENCES labels(id),
@@ -15,41 +32,20 @@ CREATE TABLE Item (
   archived BOOLEAN
 );
 
-CREATE TABLE Genre (
-  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  name VARCHAR(50) NOT NULL
-);
+CREATE TABLE games(
+  id INT PRIMARY KEY REFERENCES items(id),
+  last_played_at DATE NOT NULL,
+  multiplayer NULL
+)
 
-CREATE TABLE Author (
-  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  first_name VARCHAR(50) NOT NULL
-  last_name VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE MusicAlbum (
-  id INT PRIMARY KEY,
-  genre_id INT NOT NULL,
-  publish_date DATE NOT NULL,
-  on_spotify BOOLEAN NOT NULL,
-  FOREIGN KEY (id) REFERENCES Item(id),
-  FOREIGN KEY (genre_id) REFERENCES Genre(id)
-);
-
-CREATE TABLE Labels (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255),
-  color VARCHAR(255)
-);
-
-CREATE TABLE Books (
+CREATE TABLE books (
   id INT PRIMARY KEY REFERENCES items(id),
   title VARCHAR(255),
   publisher VARCHAR(255),
   cover_state VARCHAR(255)
 );
 
-CREATE TABLE Game(
+CREATE TABLE music_albums (
   id INT PRIMARY KEY REFERENCES items(id),
-  last_played_at DATE NOT NULL,
-  multiplayer NULL
-)
+  on_spotify BOOLEAN
+);
