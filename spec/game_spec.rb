@@ -1,4 +1,4 @@
-require_relative '../game'
+require_relative '../modules/game'
 
 RSpec.describe Game do
   let(:game_data) do
@@ -16,7 +16,7 @@ RSpec.describe Game do
   let(:game) { Game.new(game_data) }
 
   describe '#initialize' do
-    it 'assigns game_name, multiplayer, and last_played_at' do
+    it 'sets game_name, multiplayer, and last_played_at' do
       expect(game.game_name).to eq('Game')
       expect(game.multiplayer).to be true
       expect(game.last_played_at).to eq((Date.today - 731).to_s)
@@ -24,7 +24,7 @@ RSpec.describe Game do
   end
 
   describe '#can_be_archived?' do
-    context 'when the difference between last_played_at and today is greater than 730 days' do
+    context 'whenever the difference between last_played_at and today is greater than 730 days' do
       it 'returns true' do
         test_class = Class.new(Game) do
           def can_be_archived?
@@ -37,7 +37,7 @@ RSpec.describe Game do
       end
     end
 
-    context 'when last_played_at is nil' do
+    context 'whenever last_played_at is nil' do
       it 'returns true' do
         test_class = Class.new(Game) do
           def can_be_archived?
@@ -50,7 +50,7 @@ RSpec.describe Game do
       end
     end
 
-    context 'when the difference between last_played_at and today is less than or equal to 730 days' do
+    context 'whenever the difference between last_played_at and today is less than or equal to 730 days' do
       it 'returns false' do
         test_class = Class.new(Game) do
           def can_be_archived?
