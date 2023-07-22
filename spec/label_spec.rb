@@ -1,21 +1,20 @@
-require 'rspec'
+require_relative '../modules/label'
 
-# Define a shared example for the 'initialize' method
-RSpec.shared_examples 'a new label' do |title, color|
-  it 'creates a new label with title and color' do
-    label = Label.new(title, color)
-
-    expect(label.title).to eq(title)
-    expect(label.color).to eq(color)
-    expect(label.items).to be_empty
-  end
-end
-
-describe Label do
-  # Use the shared example with different scenarios for 'initialize'
+RSpec.describe Label do
   describe '#initialize' do
-    include_examples 'a new label', 'Example Label', 'purple'
-    include_examples 'a new label', 'Default Label', 'red'
+    it 'creates a new label with title and color' do
+      label = Label.new('Example Label', 'lightblue')
+
+      expect(label.title).to eq('Example Label')
+      expect(label.color).to eq('lightblue')
+      expect(label.items).to be_empty
+    end
+
+    it 'sets the default color to black if not provided' do
+      label = Label.new('Default Label')
+
+      expect(label.color).to eq('black')
+    end
   end
 
   describe '#add_item' do
