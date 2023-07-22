@@ -88,8 +88,8 @@ Clone this repository to your desired folder:
 
 Install this project with:
 
- ```bash
- bundle install
+```bash
+bundle install
 ```
 
 ### Usage
@@ -113,14 +113,16 @@ N/A.
 ## 👥 Authors <a name="authors"></a>
 
 👤 **Carlos Igreda**
+
 - GitHub: [@CarlosIgreda](https://github.com/CarlosIgreda)
 - Twitter: [@carlosigreda](https://twitter.com/carlosigreda)
 - LinkedIn: [@carlosigreda](https://www.linkedin.com/in/carlosigreda/)
 
 👤 **Haftamu Desta**
-- GitHub: [@CarlosIgreda](https://github.com/CarlosIgreda)
-- Twitter: [@carlosigreda](https://twitter.com/carlosigreda)
-- LinkedIn: [@carlosigreda](https://www.linkedin.com/in/carlosigreda/)
+
+- GitHub: [@haftamudesta](https://github.com/haftamudesta)
+- Twitter: [@DestaHftamu](https://twitter.com/DestaHftamu)
+- LinkedIn: [@Haftamu Desta](https://linkedin.com/in/haftamu-desta)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -162,7 +164,7 @@ I would like to thank all Microverse staff and my coding partners as well.
 - **What is meant by Gitflow?**
 
   - Gitflow is an alternative Git branching model that involves the use of feature branches and multiple primary branches.
-  
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📝 License <a name="license"></a>
